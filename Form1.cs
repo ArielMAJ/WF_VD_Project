@@ -6,5 +6,17 @@ namespace WF_VD_Project
         {
             InitializeComponent();
         }
+
+        private void openClientsTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            F_Clients f_clients = new F_Clients();
+            f_clients.ShowDialog();
+        }
+
+        private void openEquipmentsTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            F_Equipments f_equipments = new F_Equipments();
+            f_equipments.ShowDialog();
+        }
     }
 }
