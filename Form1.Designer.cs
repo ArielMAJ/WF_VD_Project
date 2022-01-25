@@ -30,9 +30,9 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.clientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.equipmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.adicionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openClientsTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.equipmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adicionarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openEquipmentsTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
@@ -52,11 +52,25 @@
             // clientsToolStripMenuItem
             // 
             this.clientsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.adicionarToolStripMenuItem,
+            this.addClientToolStripMenuItem,
             this.openClientsTableToolStripMenuItem});
             this.clientsToolStripMenuItem.Name = "clientsToolStripMenuItem";
             this.clientsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.clientsToolStripMenuItem.Text = "Clientes";
+            // 
+            // addClientToolStripMenuItem
+            // 
+            this.addClientToolStripMenuItem.Name = "addClientToolStripMenuItem";
+            this.addClientToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addClientToolStripMenuItem.Text = "Adicionar";
+            this.addClientToolStripMenuItem.Click += new System.EventHandler(this.addClientToolStripMenuItem_Click);
+            // 
+            // openClientsTableToolStripMenuItem
+            // 
+            this.openClientsTableToolStripMenuItem.Name = "openClientsTableToolStripMenuItem";
+            this.openClientsTableToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openClientsTableToolStripMenuItem.Text = "Ver Tabela";
+            this.openClientsTableToolStripMenuItem.Click += new System.EventHandler(this.openClientsTableToolStripMenuItem_Click);
             // 
             // equipmentsToolStripMenuItem
             // 
@@ -67,29 +81,16 @@
             this.equipmentsToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.equipmentsToolStripMenuItem.Text = "Equipamentos";
             // 
-            // adicionarToolStripMenuItem
-            // 
-            this.adicionarToolStripMenuItem.Name = "adicionarToolStripMenuItem";
-            this.adicionarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.adicionarToolStripMenuItem.Text = "Adicionar";
-            // 
-            // openClientsTableToolStripMenuItem
-            // 
-            this.openClientsTableToolStripMenuItem.Name = "openClientsTableToolStripMenuItem";
-            this.openClientsTableToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.openClientsTableToolStripMenuItem.Text = "Ver Tabela";
-            this.openClientsTableToolStripMenuItem.Click += new System.EventHandler(this.openClientsTableToolStripMenuItem_Click);
-            // 
             // adicionarToolStripMenuItem1
             // 
             this.adicionarToolStripMenuItem1.Name = "adicionarToolStripMenuItem1";
-            this.adicionarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.adicionarToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
             this.adicionarToolStripMenuItem1.Text = "Adicionar";
             // 
             // openEquipmentsTableToolStripMenuItem
             // 
             this.openEquipmentsTableToolStripMenuItem.Name = "openEquipmentsTableToolStripMenuItem";
-            this.openEquipmentsTableToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openEquipmentsTableToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.openEquipmentsTableToolStripMenuItem.Text = "Ver Tabela";
             this.openEquipmentsTableToolStripMenuItem.Click += new System.EventHandler(this.openEquipmentsTableToolStripMenuItem_Click);
             // 
@@ -101,7 +102,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Gerenciamento";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -113,7 +114,7 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem clientsToolStripMenuItem;
         private ToolStripMenuItem equipmentsToolStripMenuItem;
-        private ToolStripMenuItem adicionarToolStripMenuItem;
+        private ToolStripMenuItem addClientToolStripMenuItem;
         private ToolStripMenuItem openClientsTableToolStripMenuItem;
         private ToolStripMenuItem adicionarToolStripMenuItem1;
         private ToolStripMenuItem openEquipmentsTableToolStripMenuItem;
