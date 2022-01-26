@@ -62,7 +62,7 @@
             // 
             this.addClientToolStripMenuItem.Name = "addClientToolStripMenuItem";
             this.addClientToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addClientToolStripMenuItem.Text = "Adicionar";
+            this.addClientToolStripMenuItem.Text = "Editar Tabela";
             this.addClientToolStripMenuItem.Click += new System.EventHandler(this.addClientToolStripMenuItem_Click);
             // 
             // openClientsTableToolStripMenuItem
@@ -84,13 +84,13 @@
             // adicionarToolStripMenuItem1
             // 
             this.adicionarToolStripMenuItem1.Name = "adicionarToolStripMenuItem1";
-            this.adicionarToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
-            this.adicionarToolStripMenuItem1.Text = "Adicionar";
+            this.adicionarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.adicionarToolStripMenuItem1.Text = "Editar Tabela";
             // 
             // openEquipmentsTableToolStripMenuItem
             // 
             this.openEquipmentsTableToolStripMenuItem.Name = "openEquipmentsTableToolStripMenuItem";
-            this.openEquipmentsTableToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.openEquipmentsTableToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openEquipmentsTableToolStripMenuItem.Text = "Ver Tabela";
             this.openEquipmentsTableToolStripMenuItem.Click += new System.EventHandler(this.openEquipmentsTableToolStripMenuItem_Click);
             // 

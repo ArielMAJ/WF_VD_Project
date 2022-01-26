@@ -42,7 +42,7 @@
             this.TB_CPF = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.TB_JobTitle = new System.Windows.Forms.TextBox();
-            this.CB_EquipmentDescriptions = new System.Windows.Forms.ComboBox();
+            this.CB_EquipDesc = new System.Windows.Forms.ComboBox();
             this.btn_RemoveItem = new System.Windows.Forms.Button();
             this.btn_last_action = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
@@ -86,7 +86,7 @@
             this.CB_ClientNames.Name = "CB_ClientNames";
             this.CB_ClientNames.Size = new System.Drawing.Size(330, 23);
             this.CB_ClientNames.TabIndex = 3;
-            this.CB_ClientNames.Text = "(Novo Cliente)";
+            this.CB_ClientNames.Text = "(Novo cliente)";
             this.CB_ClientNames.SelectedIndexChanged += new System.EventHandler(this.CB_ClientNames_SelectedIndexChanged);
             // 
             // label2
@@ -172,15 +172,15 @@
             this.TB_JobTitle.Size = new System.Drawing.Size(202, 23);
             this.TB_JobTitle.TabIndex = 8;
             // 
-            // CB_EquipmentDescriptions
+            // CB_EquipDesc
             // 
-            this.CB_EquipmentDescriptions.FormattingEnabled = true;
-            this.CB_EquipmentDescriptions.Items.AddRange(new object[] {
+            this.CB_EquipDesc.FormattingEnabled = true;
+            this.CB_EquipDesc.Items.AddRange(new object[] {
             "(Novo cliente)"});
-            this.CB_EquipmentDescriptions.Location = new System.Drawing.Point(13, 165);
-            this.CB_EquipmentDescriptions.Name = "CB_EquipmentDescriptions";
-            this.CB_EquipmentDescriptions.Size = new System.Drawing.Size(248, 23);
-            this.CB_EquipmentDescriptions.TabIndex = 11;
+            this.CB_EquipDesc.Location = new System.Drawing.Point(13, 165);
+            this.CB_EquipDesc.Name = "CB_EquipDesc";
+            this.CB_EquipDesc.Size = new System.Drawing.Size(248, 23);
+            this.CB_EquipDesc.TabIndex = 11;
             // 
             // btn_RemoveItem
             // 
@@ -194,12 +194,13 @@
             // 
             // btn_last_action
             // 
-            this.btn_last_action.Location = new System.Drawing.Point(267, 247);
+            this.btn_last_action.Location = new System.Drawing.Point(267, 250);
             this.btn_last_action.Name = "btn_last_action";
             this.btn_last_action.Size = new System.Drawing.Size(75, 23);
             this.btn_last_action.TabIndex = 13;
             this.btn_last_action.Text = "Finalizar";
             this.btn_last_action.UseVisualStyleBackColor = true;
+            this.btn_last_action.Click += new System.EventHandler(this.btn_last_action_Click);
             // 
             // F_AddClient
             // 
@@ -208,7 +209,7 @@
             this.ClientSize = new System.Drawing.Size(354, 282);
             this.Controls.Add(this.btn_last_action);
             this.Controls.Add(this.btn_RemoveItem);
-            this.Controls.Add(this.CB_EquipmentDescriptions);
+            this.Controls.Add(this.CB_EquipDesc);
             this.Controls.Add(this.LB_AddedEquipmentList);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.TB_JobTitle);
@@ -247,7 +248,7 @@
         private Label label4;
         private TextBox TB_JobTitle;
         private ListBox LB_AddedEquipmentList;
-        private ComboBox CB_EquipmentDescriptions;
+        private ComboBox CB_EquipDesc;
         private Button btn_RemoveItem;
         private Button btn_last_action;
     }
