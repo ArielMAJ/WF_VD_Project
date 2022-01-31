@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace WF_VD_Project
 {
     public partial class F_AddClient : Form
@@ -34,12 +35,12 @@ namespace WF_VD_Project
 
         private void UpdateCB_Clients()
         {
-            ClientData = DB.consult("SELECT IDCLIENT, T_NAME, T_CPF, T_JOBTITLE FROM CLIENTS");
+            ClientData = DB.GetClients();
             CB_ClientNames.DataSource = ClientData;
         }
         private void UpdateCB_Equipments()
         {
-            AvailableEquipments = DB.consult("SELECT IDEQUIPMENT, T_EQUIPMENTDESCRIPTION FROM EQUIPMENTS WHERE ID_CLIENT IS NULL");
+            AvailableEquipments = DB.GetEquipments("ID_CLIENT IS NULL");
             CB_EquipDesc.DataSource = AvailableEquipments;
         }
         private void F_AddClient_Load(object sender, EventArgs e)
@@ -96,8 +97,6 @@ namespace WF_VD_Project
                 return;
             }
 
-
-            clientID = int.Parse(CB_ClientNames.SelectedValue.ToString());
             DataRow client = ClientData.Select($"IDCLIENT={clientID}")[0];
             TB_Name.Text = client.Field<string>("T_NAME");
             TB_CPF.Text = client.Field<string>("T_CPF");

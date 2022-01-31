@@ -24,5 +24,11 @@ namespace WF_VD_Project
             F_AddClient form = new F_AddClient();
             form.ShowDialog();
         }
+
+        private void adicionarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            F_EditEquipments form = new F_EditEquipments();
+            form.ShowDialog();
+        }
     }
 }
