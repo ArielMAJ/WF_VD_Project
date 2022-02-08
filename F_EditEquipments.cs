@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using WF_VD_Project.DataBase;
 
 namespace WF_VD_Project
 {
@@ -68,6 +62,11 @@ namespace WF_VD_Project
             CbB_EquipNames.DataSource = Equipments;
             Clients = DB.GetClients();
             CbB_AssociatedClient.DataSource = Clients;
+            CbB_EquipNames.Text = "(Novo equipamento)";
+            CbB_AssociatedClient.Text = "(Cliente associado)";
+            TB_EquipDescription.Text = "";
+            CbB_AssociatedClient.Enabled = CkB_associateToClient.Checked;
+
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -162,6 +161,7 @@ namespace WF_VD_Project
             if (btn_action.Text == "Adicionar") return;
             try
             {
+                //Sleep(300);
                 equipID = int.Parse(CbB_EquipNames.SelectedValue.ToString());
             }
             catch

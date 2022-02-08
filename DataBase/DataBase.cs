@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.SQLite;
 
 
-namespace WF_VD_Project
+namespace WF_VD_Project.DataBase
 {
     class DB
     {
@@ -12,7 +12,7 @@ namespace WF_VD_Project
         private static SQLiteConnection DBConnection()
         {
 
-            connection = new SQLiteConnection("Data Source=..\\..\\..\\DB\\data.db");
+            connection = new SQLiteConnection("Data Source=..\\..\\..\\DataBase\\data.db");
             connection.Open();
             return connection;
 
