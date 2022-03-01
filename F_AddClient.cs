@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WF_VD_Project.DataBase;
-
+using WF_VD_Project.Entities;
+using WF_VD_Project.Entities.Exceptions;
 
 namespace WF_VD_Project
 {
@@ -18,7 +19,7 @@ namespace WF_VD_Project
         private DataTable AvailableEquipments;
         //private DataTable UnavailableEquipments;
 
-        int clientID = 0;
+        string clientID = "";
 
         public F_AddClient()
         {
@@ -89,14 +90,8 @@ namespace WF_VD_Project
         private void CB_ClientNames_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (btn_last_action.Text == "Finalizar") return;
-            try
-            {
-                clientID = int.Parse(CB_ClientNames.SelectedValue.ToString());
-            }
-            catch
-            {
-                return;
-            }
+            try { clientID = CB_ClientNames.SelectedValue.ToString(); }
+            catch { return; }
 
             DataRow client = ClientData.Select($"IDCLIENT={clientID}")[0];
             TB_Name.Text = client.Field<string>("T_NAME");
@@ -133,27 +128,15 @@ namespace WF_VD_Project
 
         private void btn_last_action_Click(object sender, EventArgs e)
         {
+            Client client;
+            try { client = new Client(TB_Name.Text, TB_CPF.Text, TB_JobTitle.Text, LB_AddedEquipmentList.Items); }
+            catch (DomainException ex) { MessageBox.Show(ex.Message); return; }
+            catch (Exception ex) { MessageBox.Show(ex.Message); return; }
+
             switch (btn_last_action.Text)
             {
                 case "Finalizar":
-                    if (!(TB_Name.Text != "" && TB_CPF.Text != ""))
-                    {
-                        MessageBox.Show("Nome e CPF devem ser preenchidos");
-                        return;
-                    }
-
-                    DB.consult("INSERT INTO CLIENTS(T_NAME,T_CPF,T_JOBTITLE)" +
-                        $"VALUES('{TB_Name.Text}', '{TB_CPF.Text}','{TB_JobTitle.Text}') ");
-                    clientID = int.Parse(DB.consult($"SELECT IDCLIENT FROM CLIENTS WHERE " +
-                        $"T_NAME='{TB_Name.Text}' AND " +
-                        $"T_CPF='{TB_CPF.Text}' AND " +
-                        $"T_JOBTITLE='{TB_JobTitle.Text}'").Rows[0].Field<Int64>("IDCLIENT").ToString());
-                    foreach (string s in LB_AddedEquipmentList.Items)
-                    {
-                        DB.consult("UPDATE EQUIPMENTS SET " +
-                            $"ID_CLIENT={clientID} " +
-                            $"WHERE ID_CLIENT IS NULL AND IDEQUIPMENT={s.Split(" ")[0]}");
-                    }
+                    client.SaveToDB();
 
                     TB_Name.Text = "";
                     TB_CPF.Text = "";
@@ -161,40 +144,15 @@ namespace WF_VD_Project
                     LB_AddedEquipmentList.Items.Clear();
                     break;
                 case "Atualizar":
-                    if (!(TB_Name.Text != "" && TB_CPF.Text != ""))
-                    {
-                        MessageBox.Show("Nome e CPF devem ser preenchidos");
-                        return;
-                    }
-                    DB.consult("UPDATE CLIENTS SET " +
-                        $"T_NAME = '{TB_Name.Text}', " +
-                        $"T_CPF = '{TB_CPF.Text}', " +
-                        $"T_JOBTITLE = '{TB_JobTitle.Text}' " +
-                        $"WHERE IDCLIENT = {clientID};");
-
-                    DB.consult("UPDATE EQUIPMENTS SET " +
-                            $"ID_CLIENT=NULL " +
-                            $"WHERE ID_CLIENT = {clientID}");
-                    foreach (string s in LB_AddedEquipmentList.Items)
-                    {
-                        DB.consult("UPDATE EQUIPMENTS SET " +
-                            $"ID_CLIENT={clientID} " +
-                            $"WHERE ID_CLIENT IS NULL AND IDEQUIPMENT={s.Split(" ")[0]}");
-                    }
+                    client.UpdateInDB(clientID);
 
                     break;
                 case "Deletar":
-                    DB.consult("DELETE FROM CLIENTS " +
-                        $"WHERE IDCLIENT = {clientID};");
+                    client.DeleteFromDB(clientID);
+
                     TB_Name.Text = "";
                     TB_CPF.Text = "";
                     TB_JobTitle.Text = "";
-                    foreach (string s in LB_AddedEquipmentList.Items)
-                    {
-                        DB.consult("UPDATE EQUIPMENTS SET " +
-                            "ID_CLIENT=NULL " +
-                            $"WHERE ID_CLIENT = {clientID}");
-                    }
                     break;
                 default:
                     break;
@@ -209,8 +167,8 @@ namespace WF_VD_Project
 
         private void btn_Load_Click(object sender, EventArgs e)
         {
-            
-            
+
+
 
         }
     }

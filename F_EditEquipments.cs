@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data;
+using WF_VD_Project.Entities;
+using WF_VD_Project.Entities.Exceptions;
 using WF_VD_Project.DataBase;
 
 namespace WF_VD_Project
@@ -11,7 +13,7 @@ namespace WF_VD_Project
         public F_EditEquipments()
         {
             InitializeComponent();
-            
+
         }
         private void F_EditEquipments_Load(object sender, EventArgs e)
         {
@@ -87,49 +89,33 @@ namespace WF_VD_Project
 
         private void btn_action_Click(object sender, EventArgs e)
         {
+            string client_id;
+            Equipment equipment;
+
+            if (CkB_associateToClient.Checked) { client_id = CbB_AssociatedClient.SelectedValue.ToString(); }
+            else { client_id = "NULL"; }
+
+            try { equipment = new Equipment(TB_EquipDescription.Text, client_id); }
+            catch (DomainException ex) { MessageBox.Show(ex.Message); return; }
+            catch (Exception ex) { MessageBox.Show(ex.Message); return; }
+
 
             switch (btn_action.Text)
             {
                 case "Adicionar":
-                    if (TB_EquipDescription.Text == "" )
-                    {
-                        MessageBox.Show("Descrição deve ser preenchida");
-                        return;
-                    }
-                    string client_id;
-                    if (CkB_associateToClient.Checked)
-                        client_id = CbB_AssociatedClient.SelectedValue.ToString();
-                    else
-                        client_id = "NULL";
-
-                    DB.consult("INSERT INTO EQUIPMENTS(T_EQUIPMENTDESCRIPTION,ID_CLIENT)" +
-                        $"VALUES('{TB_EquipDescription.Text}', {client_id}) ");
+                    equipment.SaveToDB();
 
                     addToolStripMenuItem_Click(sender, e);
                     break;
 
                 case "Atualizar":
-                    if (TB_EquipDescription.Text == "")
-                    {
-                        MessageBox.Show("Descrição deve ser preenchida");
-                        return;
-                    }
-
-                    if (CkB_associateToClient.Checked)
-                        client_id = CbB_AssociatedClient.SelectedValue.ToString();
-                    else
-                        client_id = "NULL";
-
-                    DB.consult("UPDATE EQUIPMENTS SET " +
-                        $"T_EQUIPMENTDESCRIPTION = '{TB_EquipDescription.Text}', " +
-                        $"ID_CLIENT = {client_id} " +
-                        $"WHERE IDEQUIPMENT = {CbB_EquipNames.SelectedValue};");
+                    equipment.UpdateInDB(CbB_EquipNames.SelectedValue.ToString());
 
                     updateClientTableToolStripMenuItem_Click(sender, e);
                     break;
                 case "Deletar":
-                    DB.consult("DELETE FROM EQUIPMENTS " +
-                        $"WHERE IDEQUIPMENT = {CbB_EquipNames.SelectedValue};");
+                    Equipment.DeleteFromDB(CbB_EquipNames.SelectedValue.ToString());
+
                     deleteToolStripMenuItem_Click(sender, e);
                     break;
                 default:
@@ -173,7 +159,7 @@ namespace WF_VD_Project
             int id_client;
             string clientName;
             if (equipment.IsNull("ID_CLIENT"))
-            { 
+            {
                 id_client = -1;
                 CkB_associateToClient.Checked = false;
                 CbB_AssociatedClient.SelectedItem = null;
@@ -186,7 +172,7 @@ namespace WF_VD_Project
                 //CbB_AssociatedClient.SelectedIndex = CbB_AssociatedClient.Items.IndexOf();
                 CkB_associateToClient.Checked = true;
                 CbB_AssociatedClient.SelectedIndex = CbB_AssociatedClient.FindString(clientName);
-                
+
                 //MessageBox.Show(.ToString());
 
             }
@@ -195,7 +181,7 @@ namespace WF_VD_Project
 
             //MessageBox.Show(CbB_AssociatedClient.Items.IndexOf(id_client).ToString());
             //CbB_AssociatedClient.SelectedIndex = CbB_AssociatedClient.Items.IndexOf(clientName);
-            
+
 
         }
     }
