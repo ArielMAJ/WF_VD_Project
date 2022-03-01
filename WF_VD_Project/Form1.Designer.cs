@@ -40,12 +40,14 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clientsToolStripMenuItem,
             this.equipmentsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(215, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(752, 35);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -55,20 +57,20 @@
             this.addClientToolStripMenuItem,
             this.openClientsTableToolStripMenuItem});
             this.clientsToolStripMenuItem.Name = "clientsToolStripMenuItem";
-            this.clientsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.clientsToolStripMenuItem.Size = new System.Drawing.Size(89, 29);
             this.clientsToolStripMenuItem.Text = "Clientes";
             // 
             // addClientToolStripMenuItem
             // 
             this.addClientToolStripMenuItem.Name = "addClientToolStripMenuItem";
-            this.addClientToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.addClientToolStripMenuItem.Size = new System.Drawing.Size(213, 34);
             this.addClientToolStripMenuItem.Text = "Editar Tabela";
             this.addClientToolStripMenuItem.Click += new System.EventHandler(this.addClientToolStripMenuItem_Click);
             // 
             // openClientsTableToolStripMenuItem
             // 
             this.openClientsTableToolStripMenuItem.Name = "openClientsTableToolStripMenuItem";
-            this.openClientsTableToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.openClientsTableToolStripMenuItem.Size = new System.Drawing.Size(213, 34);
             this.openClientsTableToolStripMenuItem.Text = "Ver Tabela";
             this.openClientsTableToolStripMenuItem.Click += new System.EventHandler(this.openClientsTableToolStripMenuItem_Click);
             // 
@@ -78,30 +80,31 @@
             this.adicionarToolStripMenuItem1,
             this.openEquipmentsTableToolStripMenuItem});
             this.equipmentsToolStripMenuItem.Name = "equipmentsToolStripMenuItem";
-            this.equipmentsToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.equipmentsToolStripMenuItem.Size = new System.Drawing.Size(142, 29);
             this.equipmentsToolStripMenuItem.Text = "Equipamentos";
             // 
             // adicionarToolStripMenuItem1
             // 
             this.adicionarToolStripMenuItem1.Name = "adicionarToolStripMenuItem1";
-            this.adicionarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.adicionarToolStripMenuItem1.Size = new System.Drawing.Size(213, 34);
             this.adicionarToolStripMenuItem1.Text = "Editar Tabela";
             this.adicionarToolStripMenuItem1.Click += new System.EventHandler(this.adicionarToolStripMenuItem1_Click);
             // 
             // openEquipmentsTableToolStripMenuItem
             // 
             this.openEquipmentsTableToolStripMenuItem.Name = "openEquipmentsTableToolStripMenuItem";
-            this.openEquipmentsTableToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openEquipmentsTableToolStripMenuItem.Size = new System.Drawing.Size(213, 34);
             this.openEquipmentsTableToolStripMenuItem.Text = "Ver Tabela";
             this.openEquipmentsTableToolStripMenuItem.Click += new System.EventHandler(this.openEquipmentsTableToolStripMenuItem_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(215, 60);
+            this.ClientSize = new System.Drawing.Size(752, 422);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Gerenciamento";
             this.menuStrip1.ResumeLayout(false);
