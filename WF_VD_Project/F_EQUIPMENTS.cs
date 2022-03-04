@@ -20,8 +20,15 @@ namespace WF_VD_Project
 
         private void F_Equipments_Load(object sender, EventArgs e)
         {
-            dgv_equipments.DataSource = DB.consult("SELECT A.IDEQUIPMENT, B.T_NAME, A.T_EQUIPMENTDESCRIPTION " +
-                "FROM EQUIPMENTS A LEFT JOIN CLIENTS B ON A.ID_CLIENT = B.IDCLIENT");
+            dgv_equipments.DataSource = DB.consult(
+                "SELECT " +
+                "   A.IDEQUIPMENT AS ID, " +
+                "   B.T_NAME AS Nome, " +
+                "   A.T_EQUIPMENTDESCRIPTION AS Descrição " +
+                "FROM EQUIPMENTS A " +
+                "   LEFT JOIN CLIENTS B " +
+                "       ON A.ID_CLIENT = B.IDCLIENT"
+            );
 
         }
     }

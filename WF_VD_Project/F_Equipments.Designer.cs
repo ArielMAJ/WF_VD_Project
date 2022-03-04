@@ -38,17 +38,20 @@
             this.dgv_equipments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_equipments.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_equipments.Location = new System.Drawing.Point(0, 0);
+            this.dgv_equipments.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgv_equipments.Name = "dgv_equipments";
+            this.dgv_equipments.RowHeadersWidth = 62;
             this.dgv_equipments.RowTemplate.Height = 25;
-            this.dgv_equipments.Size = new System.Drawing.Size(509, 213);
+            this.dgv_equipments.Size = new System.Drawing.Size(727, 355);
             this.dgv_equipments.TabIndex = 0;
             // 
             // F_Equipments
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(509, 213);
+            this.ClientSize = new System.Drawing.Size(727, 355);
             this.Controls.Add(this.dgv_equipments);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "F_Equipments";
             this.Text = "Equipamentos";
             this.Load += new System.EventHandler(this.F_Equipments_Load);
