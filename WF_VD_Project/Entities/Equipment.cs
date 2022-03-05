@@ -18,6 +18,7 @@ namespace WF_VD_Project.Entities
         }
 
         public void SaveToDB()
+        // Saves equipment to EQUIPMENTS table in the database.
         {
             DB.consult(
                 $"INSERT INTO EQUIPMENTS(T_EQUIPMENTDESCRIPTION,ID_CLIENT) " +
@@ -26,6 +27,7 @@ namespace WF_VD_Project.Entities
         }
 
         public void UpdateInDB(string equipmentID)
+        // Updates equipment to EQUIPMENTS table in the database.
         {
             DB.consult(
                 $"UPDATE EQUIPMENTS SET " +
@@ -35,6 +37,7 @@ namespace WF_VD_Project.Entities
             );
         }
         public static void DeleteFromDB(string equipmentID)
+        // Deletes equipment from EQUIPMENTS table in the database.
         {
             DB.consult(
                         $"DELETE FROM EQUIPMENTS " +

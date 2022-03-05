@@ -27,6 +27,7 @@ namespace WF_VD_Project.Entities
 
 
         public void SaveToDB()
+        // Saves client to CLIENTS table in the database.
         {
             // Inserting client into DB Clients table.
             DB.consult(
@@ -56,6 +57,7 @@ namespace WF_VD_Project.Entities
         }
 
         public void UpdateInDB(string clientID)
+        // Updates client to CLIENTS table in the database.
         {
             // Updating client information
             DB.consult(
@@ -85,6 +87,7 @@ namespace WF_VD_Project.Entities
         }
 
         public void DeleteFromDB(string clientID)
+        // Deletes client from CLIENTS table in the database.
         {
             DB.consult(
                         $"DELETE FROM CLIENTS " +
